@@ -1,9 +1,9 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Build') {
       steps {
-        sh 'git status'
+        sh 'echo "helloworld"'
       }
     }
   }
