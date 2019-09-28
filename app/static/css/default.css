@@ -1,0 +1,24 @@
+* {
+	box-sizing: border-box;
+}
+html,body {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	font-family: Arial sans-serif;
+	min-height: 100vh;
+}
+a {
+	text-decoration: none;
+	display: block;
+}
+input {
+	border: none;
+	border-bottom: 2px solid #57c7eb;
+	margin-bottom: 2.5rem;
+	margin-top: .5rem;
+}
+input:focus {
+	outline: none;
+	border-bottom: 2px solid #019fd3;
+}
