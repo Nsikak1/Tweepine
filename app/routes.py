@@ -1,7 +1,7 @@
-#https://github.com/Nsikak1/Tweepine.gitfrom app import app
-from flask import render_template, request , Flask
+from app import app
+from flask import render_template, request
 
-app = Flask(__name__)
+
 @app.route('/index')
 def hello():
     return "hello"
