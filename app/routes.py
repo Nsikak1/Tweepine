@@ -1,5 +1,7 @@
 from app import app
-from flask import render_template, request
+from app.models import User
+from flask import render_template, request, redirect
+from flask_login import current_user, login_user
 
 
 @app.route('/index')
@@ -14,15 +16,18 @@ def index():
 
 @app.route('/login')
 def login():
+    if current_user.is_authenticated:
+        redirect('/index')
     return render_template("login.html")
 
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    return "Your Username is: {} and the Password is: {}".format(username,
-                                                                 password)
+    username = User.query.filter_by(username=request.form.get('username')).first()
+    if username is None or not username.check_password(request.form.get('password')):
+        return "Invalid Username or Password"
+    login_user(username, remember=True)
+    return "Welcome {}".format(username.username)
 
 
 if __name__ == '__main__':
