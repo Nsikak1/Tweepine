@@ -13,7 +13,11 @@
         <nav class="nav">
             <ul>
                 <li><a href="#">Home</a></li>
+                {% if current_user.is_anonymous %}
                 <li><a href="/login">Login</a></li>
+                {% else %}
+                <li><a href="/logout">Logout</a></li>
+                {% endif %}
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Saved Tweets</a></li>
                 <li><a href="#">Settings</a></li>
